@@ -15,8 +15,10 @@ _set current schema_: `pandi=# SET search_path to gianluca;`
 _show current schema_: `pandi=# select current_schema();`  
 
 ### Table
-_list all tables_: `pandi=# \dt`  
+_list all tables in current schema_: `pandi=# \dt`  
+_list tables from all schema_:`pandi=# \dt *.*`  
 _describe a table_: `pandi=# \d tb_employee`
+
 
 ### JSON
 _create table_: `create table tb_json(id integer primary key, description jsonb)`  
@@ -28,7 +30,7 @@ testdb=# select * from tb_json where id = 3;
   3 | [{"name": "tommy", "score": 90}, {"name": "Mark", "score": 909}]
 (1 row)
 ```
-_select indexed element in json value_: `select description->0 from tb_json where id = 3;`
+_select indexed element in json array_: `select description->0 from tb_json where id = 3;`
 ```
 testdb=# select description->0 from tb_json where id = 3;
             ?column?
