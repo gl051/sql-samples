@@ -16,4 +16,23 @@ _show current schema_: `pandi=# select current_schema();`
 
 ### Table
 _list all tables_: `pandi=# \dt`  
-_describe a table_: `pandi=# \d tb_employee`  
+_describe a table_: `pandi=# \d tb_employee`
+
+### JSON
+_create table_: `create table tb_json(id integer primary key, description jsonb)`  
+_insert json value_: `insert into tb_json values(3, '[{"name":"tommy", "score":90}, {"name":"Mark", "score":909}]');`  
+```
+testdb=# select * from tb_json where id = 3;
+ id |                           description
+----+------------------------------------------------------------------
+  3 | [{"name": "tommy", "score": 90}, {"name": "Mark", "score": 909}]
+(1 row)
+```
+_select indexed element in json value_: `select description->0 from tb_json where id = 3;`
+```
+testdb=# select description->0 from tb_json where id = 3;
+            ?column?
+--------------------------------
+ {"name": "tommy", "score": 90}
+(1 row)
+```
