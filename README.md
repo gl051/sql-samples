@@ -9,8 +9,7 @@ _list databases_: `postgres=# \l`
 _connect to database_: `postgres=# \c pandi`  
 _select database size_: `select pg_size_pretty(pg_database_size('my_db'));`
 
-### Schema
-(tip: n for namespace)
+### Schema (tip: n for namespace)
 _show schemas_: `pandi=# \dn`  
 _set current schema_: `pandi=# SET search_path to gianluca;`  
 _show current schema_: `pandi=# select current_schema();`  
